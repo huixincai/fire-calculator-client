@@ -1,7 +1,6 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import './FIREChart.scss';
-import { Chart } from 'react-chartjs-2';
 
 function FIREChart({ data }) {
     // Check if data is defined and is an array with length
@@ -10,7 +9,7 @@ function FIREChart({ data }) {
     }
 
     const chartData = {
-        labels: data.map((year, index) => index),
+        labels: data.map((year, index) => index), // Assuming 'index' is a placeholder for actual year labels
         datasets: [
             {
                 label: 'Net Worth',
@@ -25,27 +24,48 @@ function FIREChart({ data }) {
 
     const chartOptions = {
         responsive: true,
-        title: { text: "Net Worth Over Time", display: true },
+        plugins: {
+            title: {
+                display: true,
+                text: 'Net Worth Over Time'
+            },
+            legend: {
+                display: true,
+                position: 'top'
+            }
+        },
         scales: {
-            yAxes: [
-                {
-                    ticks: {
-                        autoSkip: true,
-                        maxTicksLimit: 10,
-                        beginAtZero: true
-                    },
-                    gridLines: {
-                        display: false
-                    }
+            y: {
+                beginAtZero: true,
+                grid: {
+                    display: false
+                },
+                ticks: {
+                    autoSkip: true,
+                    maxTicksLimit: 10
                 }
-            ],
-            xAxes: [
-                {
-                    gridLines: {
-                        display: false
-                    }
+            },
+            x: {
+                grid: {
+                    display: false
                 }
-            ]
+            }
+        },
+        animation: {
+            duration: 4000, // Duration of the animation for the data
+            easing: 'easeInOutElastic', // Easing function for the animation
+            onProgress: function(animation) {
+                console.log('Progressive animation in action!');
+            }
+        },
+        animations: {
+            tension: {
+                duration: 1000,
+                easing: 'linear',
+                from: 0.5,
+                to: 0.3,
+                loop: true
+            }
         }
     };
 
