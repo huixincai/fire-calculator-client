@@ -9,11 +9,11 @@ function FIREChart({ data }) {
     }
 
     const chartData = {
-        labels: data.map((year, index) => index), 
+        labels: data.map(data => data.chartYear), 
         datasets: [
             {
                 label: 'Net Worth',
-                data: data.map(year => year.netWorth),
+                data: data.map(data => data.netWorth),
                 fill: false,
                 backgroundColor: 'rgba(75,192,192,0.2)',
                 borderColor: 'rgba(75,192,192,1)',

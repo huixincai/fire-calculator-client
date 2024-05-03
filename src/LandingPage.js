@@ -3,7 +3,7 @@ import axios from 'axios';
 import './LandingPage.scss';  
 import FinancialTable from './FinancialTable/FinancialTable';
 import FIREChart from './FIREChart/FIREChart';
-// import SavingsTips from './SavingsTips/SavingsTips';
+
 function Home() {
 
   const [age, setAge] = useState(35);
@@ -13,9 +13,11 @@ function Home() {
   const [expectedRateOfReturn, setExpectedRateOfReturn] = useState(3);
   const [results, setResults] = useState(null);  
   
-  const [chartData, setChartData] = useState([]);
+  const [visualData, setVisualData] = useState([]);
 
   const inflationRate = "3%";
+
+
 
   const handleCalculate = async (event) => {
     event.preventDefault();
@@ -32,7 +34,7 @@ function Home() {
       const response = await axios.post('http://localhost:3001/calculate', payload);
       console.log("Received data from server:", response.data);
       setResults(response.data);
-      setChartData(response.data.yearlyData);
+      setVisualData(response.data.yearlyData);
     } catch (error) {
       console.error('Error performing the calculation:', error);
       alert('Calculation failed: ' + (error.response ? error.response.data.error : error.message));
@@ -106,9 +108,9 @@ function Home() {
           <p>Required savings: {results.requiredSavings}</p>
         </div>
       )}
-      <FinancialTable data={results ? results.yearlyData : []} />
-      {chartData.length > 0 && <FIREChart data={chartData} />}
-      {/* <SavingsTips/> */}
+      <FinancialTable data={visualData} />
+      <FIREChart data={visualData} />    
+     
       <button onClick={() => window.location.href='/tips'}>Savings Tips</button>
     </div>
   );

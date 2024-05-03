@@ -19,13 +19,13 @@ function FinancialTable({ data }) {
                 </tr>
             </thead>
             <tbody>
-                {data.map((year, index) => (
+                {data.map((data, index) => (
                     <tr key={index}>
-                        <td>{year.age}</td>
+                        <td>{data.age}</td>
                         <td>{index}</td>
-                        <td>${year.annualIncome.toLocaleString()}</td>
-                        <td>${year.annualSavings.toLocaleString()}</td>
-                        <td>${year.netWorth.toLocaleString()}</td>
+                        <td>${data.annualIncome.toLocaleString()}</td>
+                        <td>${data.annualSavings.toLocaleString()}</td>
+                        <td>${data.netWorth.toLocaleString()}</td>
                     </tr>
                 ))}
             </tbody>
