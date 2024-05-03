@@ -2,7 +2,7 @@ import React from 'react';
 import './FinancialTable.scss';
 
 function FinancialTable({ data }) {
-    // Check if data is defined and is an array with length
+    
     if (!data || !Array.isArray(data) || data.length === 0) {
         return <p>No data available. Please submit the form to calculate.</p>;
     }
