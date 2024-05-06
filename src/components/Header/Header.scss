@@ -1,0 +1,40 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/colors" as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem;
+  align-items: center;
+
+  @include tablet {
+    flex-direction: row;
+    padding: 1rem 2rem;
+  }
+  @include desktop {
+    padding: 1rem 8rem;
+  }
+
+  a {
+    text-decoration: none;
+    text-wrap: nowrap;
+    color: $primary-black;
+  }
+
+  &__menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+
+    @include tablet {
+      justify-content: flex-end;
+    }
+    @include desktop {
+      gap: 2rem;
+      padding-right: 1rem;
+    }
+  }
+}

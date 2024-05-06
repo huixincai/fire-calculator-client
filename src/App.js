@@ -1,15 +1,22 @@
-import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LandingPage from './LandingPage';
-import SavingsTips from './SavingsTips/SavingsTips';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+// import Header from "./components/Header/Header";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import CalculatorPage from "./pages/CalculatorPage/CalculatorPage";
+import SavingsTips from "./components/SavingsTips/SavingsTips";
+
+import "./styles/global.scss";
+
 function App() {
   return (
     <BrowserRouter>
+      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        {/* <Route path="/chart" element={<ChartPage />} /> */}
+        <Route path="/calculator" element={<CalculatorPage />} />
         <Route path="/tips" element={<SavingsTips />} />
-        
+        <Route path="*"  element={<Navigate to="/" />} />
+        {/* <Redirect to="/" /> */}
       </Routes>
     </BrowserRouter>
   );
