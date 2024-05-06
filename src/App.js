@@ -5,8 +5,6 @@ import LandingPage from "./pages/LandingPage/LandingPage";
 import CalculatorPage from "./pages/CalculatorPage/CalculatorPage";
 import SavingsTips from "./components/SavingsTips/SavingsTips";
 
-import "./styles/global.scss";
-
 function App() {
   return (
     <BrowserRouter>

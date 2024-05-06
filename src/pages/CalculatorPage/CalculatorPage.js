@@ -53,7 +53,6 @@ function CalculatorPage() {
     <>
       <Header />
       <div className="calculator">
-        <h1 className="title">FIRE Calculator</h1>
         <form onSubmit={handleCalculate} className="form">
           <div className="input-group">
             <label htmlFor="age">Age:</label>
