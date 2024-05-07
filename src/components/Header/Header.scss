@@ -2,23 +2,35 @@
 @use "../../styles/partials/colors" as *;
 
 .header {
+  background-image: url('../../assets/images/header.jpg');
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
-  padding: 1rem 1rem;
+  gap: 1rem;
+  padding: 2rem;
   align-items: center;
+  width: 100%;
 
   @include tablet {
     flex-direction: row;
-    padding: 1rem 2rem;
+    justify-content: space-between;
+    padding: 2.5rem 3rem;
   }
+
   @include desktop {
-    padding: 1rem 8rem;
+    padding: 3rem 10rem;
   }
 
   a {
-    text-decoration: none;
-    text-wrap: nowrap;
-    color: $primary-black;
+    text-decoration: none; 
+    color: $primary-darkblue;
+    font-size: 1rem;
+    font-weight: 900;
+  }
+
+  h2 {
+    font-weight: bold;
   }
 
   &__menu {
@@ -31,10 +43,21 @@
 
     @include tablet {
       justify-content: flex-end;
+      width: auto;
     }
+
     @include desktop {
       gap: 2rem;
       padding-right: 1rem;
     }
   }
 }
+
+  // .button {
+  //   background-color: $primary-darkblue;
+  //   color: white;
+
+  //   &:hover {
+  //     background-color: $primary-lightblue;
+  //   }
+  // }

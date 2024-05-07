@@ -1,15 +1,24 @@
 import "./FIREResult.scss";
 
-function FIREResult({ results }) {
-  if (!results) {
+function FIREResult({ data }) {
+  if (!data) {
     return <p>No data available. Please submit the form to calculate.</p>;
   }
 
+  const { yearsToFI, ageAtFI, requiredSavings, canFIRE } = data;
+
   return (
     <div className="fire-results">
-      <p>Years until financial independence: {results.yearsToFI}</p>
-      <p>Age at financial independence: {results.ageAtFI}</p>
-      <p>Required savings: {results.requiredSavings}</p>
+      {canFIRE ? (
+        <>
+          <p>Years until financial independence: {yearsToFI}</p>
+          <p>Age at financial independence: {ageAtFI}</p>
+        </>
+      ) : (
+        <p>Financial independence not possible in next 40 years.</p>
+      )}
+
+      <p>Required savings: {requiredSavings}</p>
     </div>
   );
 }

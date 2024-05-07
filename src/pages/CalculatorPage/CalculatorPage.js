@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import Header from "../../components/Header/Header";
-import FIREResult from "../../components/FIREResult/FIREResult";
-import FinancialTable from "../../components/FinancialTable/FinancialTable";
-import FIREChart from "../../components/FIREChart/FIREChart";
+import CalculatorRighPanel from "../../components/CalculatorRighPanel/CalculatorRighPanel";
 
 import "./CalculatorPage.scss";
+
+const inflationRate = "3%";
+const withdrawalRate = "4%";
 
 function CalculatorPage() {
   const [age, setAge] = useState(35);
@@ -14,14 +15,13 @@ function CalculatorPage() {
   const [annualExpenses, setAnnualExpenses] = useState(30000);
   const [currentNetWorth, setCurrentNetWorth] = useState(20000);
   const [expectedRateOfReturn, setExpectedRateOfReturn] = useState(3);
-  const [results, setResults] = useState(null);
-
-  const [visualData, setVisualData] = useState();
-
-  const inflationRate = "3%";
+  const [results, setResults] = useState();
 
   const handleCalculate = async (event) => {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
+
     const payload = {
       age: parseInt(age, 10),
       annualIncome: parseFloat(annualIncome),
@@ -35,11 +35,7 @@ function CalculatorPage() {
         "http://localhost:3001/api/calculate",
         payload
       );
-      // console.log("Received data from server:", data);
-      // const [low, average, high] = data;
-      const [, average,] = data;
-      setResults(average);
-      setVisualData(average.yearlyData);
+      setResults(data);
     } catch (error) {
       console.error("Error performing the calculation:", error);
       alert(
@@ -49,74 +45,87 @@ function CalculatorPage() {
     }
   };
 
+  useEffect(() => {
+    handleCalculate();
+  }, []);
+
   return (
     <>
       <Header />
       <div className="calculator">
-        <form onSubmit={handleCalculate} className="form">
-          <div className="input-group">
-            <label htmlFor="age">Age:</label>
-            <input
-              type="number"
-              id="age"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-              placeholder="Enter your age"
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="annualIncome">Annual Income:</label>
-            <input
-              type="number"
-              id="annualIncome"
-              value={annualIncome}
-              onChange={(e) => setAnnualIncome(e.target.value)}
-              placeholder="Enter your annual income"
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="annualExpenses">Annual Expenses:</label>
-            <input
-              type="number"
-              id="annualExpenses"
-              value={annualExpenses}
-              onChange={(e) => setAnnualExpenses(e.target.value)}
-              placeholder="Enter your annual expenses"
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="currentNetWorth">Current Net Worth:</label>
-            <input
-              type="number"
-              id="currentNetWorth"
-              value={currentNetWorth}
-              onChange={(e) => setCurrentNetWorth(e.target.value)}
-              placeholder="Enter your current net worth"
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="expectedRateOfReturn">
-              Expected Rate of Return (%):
-            </label>
-            <input
-              type="number"
-              id="expectedRateOfReturn"
-              value={expectedRateOfReturn}
-              onChange={(e) => setExpectedRateOfReturn(e.target.value)}
-              placeholder="Enter expected rate of return"
-            />
+        <div className="calculator__left-panel">
+          <form onSubmit={handleCalculate} className="form">
+            <div className="input-group">
+              <label htmlFor="age">Age:</label>
+              <input
+                type="number"
+                id="age"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+                placeholder="Enter your age"
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="annualIncome">Annual Income:</label>
+              <input
+                type="number"
+                id="annualIncome"
+                value={annualIncome}
+                step="5000"
+                onChange={(e) => setAnnualIncome(e.target.value)}
+                placeholder="Enter your annual income"
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="annualExpenses">Annual Expenses:</label>
+              <input
+                type="number"
+                id="annualExpenses"
+                value={annualExpenses}
+                step="2000"
+                onChange={(e) => setAnnualExpenses(e.target.value)}
+                placeholder="Enter your annual expenses"
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="currentNetWorth">Current Net Worth:</label>
+              <input
+                type="number"
+                id="currentNetWorth"
+                value={currentNetWorth}
+                step="5000"
+                onChange={(e) => setCurrentNetWorth(e.target.value)}
+                placeholder="Enter your current net worth"
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="expectedRateOfReturn">
+                Expected Rate of Return (%):
+              </label>
+              <input
+                type="number"
+                id="expectedRateOfReturn"
+                value={expectedRateOfReturn}
+                onChange={(e) => setExpectedRateOfReturn(e.target.value)}
+                placeholder="Enter expected rate of return"
+              />
+            </div>
             <div className="input-group">
               <label>Inflation Rate Used in Calculations:</label>
               <span className="inflation-rate">{inflationRate}</span>
             </div>
-          </div>
-          <button type="submit" className="submit-btn">
-            Calculate
-          </button>
-        </form>
-        {results && <FIREResult results={results} />}
-        {visualData && <FinancialTable data={visualData} />}
-        {visualData && <FIREChart data={visualData} />}
+            <div className="input-group">
+              <label>Withdrawal Rate Used in Calculations:</label>
+              <span className="inflation-rate">{withdrawalRate}</span>
+            </div>
+            <button type="submit" className="submit-btn">
+              Calculate
+            </button>
+          </form>
+        </div>
+        <div className="calculator__right-panel">
+          <CalculatorRighPanel results={results} />
+        </div>
       </div>
     </>
   );

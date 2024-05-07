@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 // import Header from "./components/Header/Header";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import CalculatorPage from "./pages/CalculatorPage/CalculatorPage";
-import SavingsTips from "./components/SavingsTips/SavingsTips";
+import SavingsTips from "./pages/SavingsTips/SavingsTips";
 
 function App() {
   return (

@@ -11,8 +11,7 @@ function LandingPage() {
       <p>
         This is a simple calculator that helps you estimate how you can achieve Financial Independence, Retire Early
       </p>
-      <p>To get started, click on the "Calculator" link above.</p>
-      <CTAButton onClick={() => navigate("/calculator")} buttonText="Go to Calculator" variant="primary" />
+      <CTAButton onClick={() => navigate("/calculator")} buttonText="Go to Calculator !" variant="primary" />
     </div>
   );
 }

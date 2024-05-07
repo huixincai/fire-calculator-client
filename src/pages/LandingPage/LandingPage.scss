@@ -2,7 +2,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .landing-page {
-  padding-top: 25vh;
+  padding-top: 35vh;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -12,4 +12,14 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: $primary-darkblue;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-weight: 600;
+  }
 }
+

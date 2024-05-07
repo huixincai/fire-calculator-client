@@ -1,19 +1,23 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
-
+import CTAButton from "../CTAButton/CTAButton";
 import "./Header.scss";
 
-const Header = () => {
+const Header = ({ showButton = true }) => {
   const navigate = useNavigate();
   return (
     <header className="header">
       <Link to="/">
         <h2>FIRE Calculator</h2>
       </Link>
-      <div className="header__menu">
-        <Button onClick={() => navigate("/tips")}>FIRE TIPS</Button>
+      {showButton && (
+        <div className="header__menu">
+          <CTAButton
+            onClick={() => navigate("/tips")}
+            buttonText="FIRE TIPS"
+          />
       </div>
+      )}
     </header>
   );
 };

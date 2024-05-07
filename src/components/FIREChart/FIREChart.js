@@ -26,6 +26,8 @@ function FIREChart({ data }) {
 
   const chartOptions = {
     responsive: true,
+    maintainAspectRatio: true,
+    aspectRatio: 2,
     plugins: {
       title: {
         display: true,
@@ -54,18 +56,19 @@ function FIREChart({ data }) {
       },
     },
     animation: {
-      duration: 4000,
+      duration: 1000,
       easing: "easeInOutElastic",
     },
     animations: {
       tension: {
-        duration: 1000,
+        duration: 500,
         easing: "linear",
         from: 0.5,
         to: 0.3,
         loop: true,
       },
     },
+    resizeDelay: 200,
   };
 
   return (

@@ -10,7 +10,7 @@ function FinancialTable({ data }) {
 
   return (
     <div className="financial-table">
-      <Table striped bordered hover>
+      <Table striped bordered hover responsive size="sm">
         <thead>
           <tr>
             <th>Age</th>

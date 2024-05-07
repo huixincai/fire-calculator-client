@@ -6,30 +6,28 @@
   position: relative;
   display: flex;
   align-items: center;
-  font-size: 0.8125rem;
 
   &__cta-button {
-    height: 36px;
+    height: 2.25rem;
     width: 100%;
     border-radius: 20px;
     border: none;
     font-weight: 600;
-    padding: 0 16px;
-    min-width: 72px;
+    padding: 0 1rem;
+    min-width: 4.5rem;
 
     @include tablet {
       width: auto;
-      height: 38px;
+      height: 2.75rem;
+      font-size: 1.25rem;
     }
-
-    
 
     &--primary {
       background-color: $primary-darkblue;
       color: $primary-white;
       &:hover {
         cursor: pointer;
-        background-color: $background-graphite;
+        background-color: $primary-lightblue;
       }
     }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import Table from 'react-bootstrap/Table';
-
+import Header from "../../components/Header/Header";
 import "./SavingsTips.scss";
 
 const SavingsTips = () => {
@@ -44,6 +44,8 @@ const SavingsTips = () => {
   ];
 
   return (
+    <>
+    <Header showButton={false}/>
     <div className="savings-tips-container">
       <h2>Small Changes, Big Savings</h2>
       <Table striped bordered hover>
@@ -67,7 +69,8 @@ const SavingsTips = () => {
         </tbody>
       </Table>
     </div>
+    </>
   );
-};
+}
 
 export default SavingsTips;
