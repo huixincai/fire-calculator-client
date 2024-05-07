@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import Header from "../../components/Header/Header";
-import CalculatorRighPanel from "../../components/CalculatorRighPanel/CalculatorRighPanel";
+import CalculatorRightPanel from "../../components/CalculatorRightPanel/CalculatorRightPanel";
 
 import "./CalculatorPage.scss";
 
@@ -124,7 +124,7 @@ function CalculatorPage() {
           </form>
         </div>
         <div className="calculator__right-panel">
-          <CalculatorRighPanel results={results} />
+          <CalculatorRightPanel results={results} />
         </div>
       </div>
     </>

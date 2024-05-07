@@ -12,7 +12,7 @@ function FIREResult({ data }) {
       {canFIRE ? (
         <>
           <p>Years until financial independence: {yearsToFI}</p>
-          <p>Age at financial independence: {ageAtFI}</p>
+          <p className="fire-results__fire-year">Age at financial independence: {ageAtFI}</p>
         </>
       ) : (
         <p>Financial independence not possible in next 40 years.</p>

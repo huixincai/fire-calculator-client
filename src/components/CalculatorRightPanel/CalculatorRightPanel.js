@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import FIREResult from "../../components/FIREResult/FIREResult";
-import FinancialTable from "../../components/FinancialTable/FinancialTable";
-import FIREChart from "../../components/FIREChart/FIREChart";
-import WithdrawalTable from "../../components/WithdrawalTable/WithdrawalTable";
+import FIREResult from "../FIREResult/FIREResult";
+import FinancialTable from "../FinancialTable/FinancialTable";
+import FIREChart from "../FIREChart/FIREChart";
+import WithdrawalTable from "../WithdrawalTable/WithdrawalTable";
 
-import "./CalculatorRighPanel.scss";
+import "./CalculatorRightPanel.scss";
 
-function CalculatorRighPanel({ results }) {
+function CalculatorRightPanel({ results }) {
   const [showChart, setShowChart] = useState(true);
   const [showWithdrawalTable, setShowWithdrawalTable] = useState();
 
@@ -63,4 +63,4 @@ function CalculatorRighPanel({ results }) {
   );
 }
 
-export default CalculatorRighPanel;
+export default CalculatorRightPanel;
