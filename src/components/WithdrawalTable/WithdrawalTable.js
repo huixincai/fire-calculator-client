@@ -21,7 +21,7 @@ const WithdrawalTable = ({ data }) => {
             <tr key={index}>
               <td>{item.withdrawalRate * 100}%</td>
               <td>${item.requiredSavings.toLocaleString()}</td>
-              <td>{item.chartYear}</td>
+              <td>{item.canFIRE ? item.chartYear : "N/A"}</td>
             </tr>
           ))}
         </tbody>
