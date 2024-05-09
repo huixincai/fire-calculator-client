@@ -8,13 +8,13 @@ import SavingsTips from "./pages/SavingsTips/SavingsTips";
 function App() {
   return (
     <BrowserRouter>
-      {/* <Header /> */}
+    
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/calculator" element={<CalculatorPage />} />
         <Route path="/tips" element={<SavingsTips />} />
         <Route path="*"  element={<Navigate to="/" />} />
-        {/* <Redirect to="/" /> */}
+      
       </Routes>
     </BrowserRouter>
   );
